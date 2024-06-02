@@ -1,3 +1,6 @@
+function indexConverter(i, j) {
+  return i * 8 + j;
+}
 function graph() {
   function adjacencyObject(i, j) {
     const arrOperations = [
@@ -15,8 +18,9 @@ function graph() {
       for (let ele of arrOperations) {
         let xf = xi + ele[0];
         let yf = yi + ele[1];
-        if (xf < 8 && xf > 0 && yf < 8 && yf > 0) {
-          arrMoves.push([xf, yf]);
+        if (xf < 8 && xf >= 0 && yf < 8 && yf >= 0) {
+          var toBePushed = indexConverter(xf, yf);
+          arrMoves.push(toBePushed);
         }
       }
       return arrMoves;
@@ -33,8 +37,5 @@ function graph() {
   return graph;
 }
 var graphF = graph();
-//to convert given coordinates into graph(array) index
-function indexConverter(i, j) {
-  return i * 8 + j;
-}
-export { graphF, indexConverter };
+
+export { graphF };
